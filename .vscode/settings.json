@@ -1,0 +1,8 @@
+{
+    "gitflow4code.releases": [
+        {
+            "name": "release/2019",
+            "base": "develop"
+        }
+    ]
+}

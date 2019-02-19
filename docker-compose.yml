@@ -1,0 +1,24 @@
+version: '3'
+
+services:
+
+  web:
+    build: ./docker/nginx
+    container_name: igor_nginx
+    ports:
+      - 80:80
+    volumes:
+      - ${APP_HOST}:${APP_CONTAINER}
+      - ${LOG_HOST}:${LOG_CONTAINER}
+    working_dir: ${APP_CONTAINER}
+    links:
+      - php
+
+  php:
+    build: ./docker/PHP
+    container_name: php-fpm
+    volumes:
+      - ${APP_HOST}:${APP_CONTAINER}
+    working_dir: ${APP_CONTAINER}
+    environment:
+      - DB_HOST=192.168.0.117
